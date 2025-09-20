@@ -6,6 +6,7 @@ import {
   IsEnum,
 } from "class-validator";
 import { ResourceType } from "@prisma/client";
+import { AreaDTO, AreaWrapperDTO } from "./area";
 
 export class ResourceDTO {
   @IsUUID()
@@ -38,8 +39,9 @@ export class ResourceDTO {
   @IsString()
   createdAt: Date;
 
+  @IsString({ each: true })
   @IsOptional()
-  areas?: { id: string; name: string }[];
+  areas?: AreaWrapperDTO[];
 
   @IsOptional()
   communities?: { id: string }[];
@@ -122,3 +124,4 @@ export default interface ResourceProps {
   data: ResourceCreateDTO
   onUpdate: (values: Partial<ResourceCreateDTO>) => void
 }
+//ResourceResponseDTO en  /lib/prisma-selects.ts

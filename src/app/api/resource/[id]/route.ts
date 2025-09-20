@@ -18,7 +18,7 @@ export async function GET(request: NextRequest, context: any) {
 }
 
 export async function DELETE(request: NextRequest, context: any) {
-  const { id } = (await context.params) as { id: string };
+  const { id } = context.params as { id: string };
 
   const resource = await prismadb.resource.delete({
     where: { id: id },

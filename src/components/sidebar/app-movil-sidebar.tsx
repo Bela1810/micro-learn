@@ -26,6 +26,8 @@ export function AppMobileSidebar() {
     )
     const [showDialog, setShowDialog] = React.useState(false)
 
+
+
     async function handleClick(item: (typeof navigationBarData.navMain)[0]) {
         if (item.title === "Create") {
             if (session?.user?.id) {
